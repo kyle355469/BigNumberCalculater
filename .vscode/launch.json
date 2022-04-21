@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          // 使用 GDB 除錯程式
+          "name": "(gdb) Launch",
+          "type": "cppdbg",
+          "request": "launch",
+          // 之前編譯好的可執行檔案路徑
+          "program": "${workspaceFolder}/build/${workspaceFolderBasename}.exe",
+          "args": [],
+          "stopAtEntry": false,
+          // 設定 cwd 到 build 目錄
+          "cwd": "${workspaceFolder}/build",
+          "environment": [],
+          // 不要在整合終端裡執行程式
+          "externalConsole": true,
+          "MIMode": "gdb",
+          // 偵錯程式可執行檔案的路徑
+          "miDebuggerPath": "C:\\Portable\\mingw64\\bin\\gdb.exe",
+          "setupCommands": [
+              {
+                  "description": "Enable pretty-printing for gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": true
+              }
+          ],
+          // 除錯前先執行 compile（定義在上面的 tasks.json 裡）
+          "preLaunchTask": "compile"
+      }
+  ]
+}
